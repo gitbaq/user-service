@@ -5,11 +5,14 @@ pipeline {
         jdk 'jdk17'
     }
     stages {
+        stage ('Pre-Initialize') {
+            steps{
+                echo "${env.PATH}"
+            }
+        }
         stage ('Initialize') {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                '''
+                sh "echo $PATH"
             }
         }
 
