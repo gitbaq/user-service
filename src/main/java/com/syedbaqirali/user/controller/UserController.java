@@ -27,7 +27,7 @@ public class UserController {
         log.info("UserController: Finding User: " + userId);
         return userService.findUserWithDepartment(userId);
     }
-    //Added Comment
+
 
     @GetMapping("/")
     public List<User> findAll(){
