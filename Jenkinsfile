@@ -10,11 +10,7 @@ pipeline {
                 echo "${env.PATH}"
             }
         }
-        stage ('Initialize') {
-            steps {
-                sh "echo $PATH"
-            }
-        }
+
 
         stage ('Build') {
             steps {
