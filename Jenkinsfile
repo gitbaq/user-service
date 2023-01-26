@@ -14,7 +14,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                mvn install
+                mvn "install"
             }
             post {
                 success {
