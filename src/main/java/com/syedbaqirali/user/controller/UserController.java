@@ -25,7 +25,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseTemplateVO findUserById(@PathVariable("id") Long userId){
         log.info("UserController: Finding User: " + userId);
-        return userService.findUserWithDepartment(userId);
+        return userService.findUserWithDepartment(userId); 
     }
 
     @GetMapping("/")
