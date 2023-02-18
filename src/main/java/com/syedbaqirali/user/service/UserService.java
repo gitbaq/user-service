@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -18,8 +17,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
     public User saveUser(User user) {
         log.info("UserService: Saving User: " + user.toString());
 
@@ -41,7 +40,8 @@ public class UserService {
         ResponseTemplateVO vo = new ResponseTemplateVO();
         User user = userRepository.findByUserId(userId);
 
-        Department department = restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(), Department.class);
+        Department department = new Department();
+//                restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(), Department.class);
 
         vo.setUser(user);
         vo.setDepartment(department);

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-h2
+  labels:
+    app: user-service-h2
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: user-service-h2
+  template:
+    metadata:
+      labels:
+        app: user-service-h2
+    spec:
+      containers:
+        - name: user-service-h2
+          imagePullPolicy: IfNotPresent
+          image: user-service-h2
+          ports:
+          - containerPort: 9003

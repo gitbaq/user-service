@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-db-config
+data:
+  host: user-service-db
+  database: sba_db

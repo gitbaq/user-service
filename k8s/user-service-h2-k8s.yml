@@ -1,0 +1,44 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: user-service-h2
+spec:
+  selector:
+    app: user-service-h2
+  ports:
+    - protocol: TCP
+      port: 9003
+      nodePort: 30081
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-h2
+spec:
+  selector:
+    matchLabels:
+      app: user-service-h2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user-service-h2
+    spec:
+      containers:
+        - name: user-service-h2
+          image: user-service-h2:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9003
+          env:
+            - name: MONGO_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: user-service-db-config
+                  key: database
+            - name: MONGO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: user-service-db-config
+                  key: host
