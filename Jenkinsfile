@@ -5,14 +5,10 @@ pipeline {
                   jdk 'jdk17'
               }
     stages {
-        stage('Install') {
-                steps {
-                    sh 'mvn install'
-                }
-            }
+
         stage('Build') {
             steps {
-                sh 'mvn -e clean package'
+                sh 'mvn -e clean install package'
             }
         }
         stage('Test') {
