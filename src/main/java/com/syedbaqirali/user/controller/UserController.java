@@ -34,4 +34,9 @@ public class UserController {
         log.info("UserController: Finding All Users: ");
         return userService.findAll();
     }
+
+    @GetMapping("/hello/{msg}")
+    public String hello(@PathVariable("msg") String msg){
+        return msg==null?"Hello!":"Message is: " + msg;
+    }
 }
